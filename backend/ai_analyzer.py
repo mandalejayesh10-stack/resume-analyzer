@@ -3,7 +3,11 @@ from config import settings
 import json
 from typing import Dict, Any
 
-client = OpenAI(api_key=settings.openai_api_key)
+# Lazy initialize client to avoid crashes if API key is missing
+def get_client():
+    if not settings.openai_api_key:
+        raise ValueError("OPENAI_API_KEY environment variable not set. Please set it and restart the app.")
+    return OpenAI(api_key=settings.openai_api_key)
 
 class AIAnalyzer:
     
@@ -75,7 +79,7 @@ Return a JSON object with this exact structure:
 }}"""
 
         try:
-            response = client.chat.completions.create(
+            response = get_client().chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": AIAnalyzer.SYSTEM_PROMPT},
@@ -134,7 +138,7 @@ Return a JSON object with this exact structure:
 }}"""
 
         try:
-            response = client.chat.completions.create(
+            response = get_client().chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are an expert recruiter analyzing resume-job fit."},
@@ -189,7 +193,7 @@ Return a JSON object with this structure:
 }}"""
 
         try:
-            response = client.chat.completions.create(
+            response = get_client().chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a professional resume writer."},
@@ -229,7 +233,7 @@ Return a JSON object with:
 }}"""
 
         try:
-            response = client.chat.completions.create(
+            response = get_client().chat.completions.create(
                 model="gpt-4o-mini",
                 messages=[
                     {"role": "system", "content": "You are a professional cover letter writer."},
