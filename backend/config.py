@@ -4,6 +4,7 @@ from typing import List
 class Settings(BaseSettings):
     openai_api_key: str = ""
     database_url: str = "sqlite:///./resume_analyzer.db"
+    redis_url: str = ""
     cors_origins: str = "http://localhost:3000,http://localhost:5173"
     
     class Config:
