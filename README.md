@@ -1,6 +1,12 @@
 # AI Resume Analyzer SaaS
 
+![Live](https://img.shields.io/badge/Live-Demo-brightgreen)
+
 A complete AI-powered resume analysis platform that helps job seekers optimize their resumes for ATS systems and improve their chances of landing interviews.
+
+## 🚀 Live Demo
+- **Frontend (Vercel):** [https://resume-analyzer-git-main-jayeshpari25-8937s-projects.vercel.app](https://resume-analyzer-git-main-jayeshpari25-8937s-projects.vercel.app)
+- **Backend API (Railway):** [https://web-production-58623.up.railway.app](https://web-production-58623.up.railway.app)
 
 ## Features
 
